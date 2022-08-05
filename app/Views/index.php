@@ -255,7 +255,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <?= $this->renderSection('content'); ?>
+                    <?=$this->renderSection('content');?>
 
                 </div>
                 <!-- /.container-fluid -->
