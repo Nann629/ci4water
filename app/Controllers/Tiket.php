@@ -2,10 +2,22 @@
 
 namespace App\Controllers;
 
-class Pesawat extends BaseController
+use App\Models\penerbanganModel;
+
+class Tiket extends BaseController
 {
+    protected $rute;
+    public function __construct()
+    {
+        $this->rute = new penerbanganModel();
+    }
     public function index()
     {
-        return view('tiket/home');
+        $rut = $this->rute->findAll();
+        $data = [
+            'title' => 'Pesanan Tiket',
+            'rute' => $rut,
+        ];
+        return view('tiket/home', $data);
     }
 }

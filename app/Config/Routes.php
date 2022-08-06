@@ -43,6 +43,7 @@ $routes->get('/pesawat', 'Pesawat::index');
 $routes->get('/tiket', 'Tiket::index');
 
 $routes->get('/penerbangan', 'Penerbangan::index');
+$routes->post('/penerbangan/save', 'Penerbangan::save');
 
 /*
  * --------------------------------------------------------------------
