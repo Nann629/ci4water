@@ -37,13 +37,15 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
-$routes->get('/pesawat', 'Pesawat::index');
+$routes->get('pesawat', 'Pesawat::index');
 // $routes->get('/pesawat', 'Pesawat::index');
 
-$routes->get('/tiket', 'Tiket::index');
+$routes->get('tiket', 'Tiket::index');
 
-$routes->get('/penerbangan', 'Penerbangan::index');
-$routes->post('/penerbangan/save', 'Penerbangan::save');
+$routes->get('penerbangan', 'Penerbangan::index');
+$routes->post('penerbangan/save', 'Penerbangan::save');
+$routes->post('penerbangan/update(:segment)', 'Penerbangan::update/$1');
+$routes->get('penerbangan/delete(:num)', 'Penerbangan::delete/$1');
 
 /*
  * --------------------------------------------------------------------

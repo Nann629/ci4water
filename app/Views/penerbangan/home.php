@@ -29,7 +29,7 @@
                                 <th>Tujuan</th>
                                 <th>Harga</th>
                                 <th>Code Pesawat</th>
-                                <th>Aksi</th>
+                                <th colspan="2">Aksi</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -39,7 +39,7 @@
                                 <th>Tujuan</th>
                                 <th>Harga</th>
                                 <th>Code Pesawat</th>
-                                <th>Aksi</th>
+                                <th colspan="2">Aksi</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -51,7 +51,12 @@
                                     <td><?=$p['price'];?></td>
                                     <td><?=$p['code'];?></td>
                                     <td class="text-center">
-                                        <a href="" type="button" class="btn btn-danger btn-sm text-center">
+                                        <a href="#" type="button" class="btn btn-primary btn-sm text-center" data-toggle="modal" data-target="#editmodal<?=$p['idrute'];?>">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="/penerbangan/delete<?=$p['idrute']?>" onclick="return confirm('Apakah anda yakin?');" type="button" class="btn btn-danger btn-sm text-center">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
@@ -66,16 +71,16 @@
 </div>
 
 <!-- Add Modal-->
-<div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add data penerbangan</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <form action="penerbangan/save" method="post">
+<form action="penerbangan/save" method="POST">
+    <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add data penerbangan</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
                 <div class="modal-body">
                     <?=csrf_field();?>
                     <div class="col form-group">
@@ -122,10 +127,73 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <button class="btn btn-primary" type="submit">Add</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+</form>
+
+<!-- Edit Modal-->
+<form action="penerbangan/update" method="POST">
+    <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add data penerbangan</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <?=csrf_field();?>
+                    <div class="col form-group">
+                        <div class="row mb-2">
+                            <label for="depart">Tanggal Berangkat</label>
+                            <input class="form-control" type="date" placeholder="Tanggal Berangkat" id="depart" name="depart" value="<?=$p['depart'];?>" autofocus>
+                        </div>
+                    </div>
+                    <div class="col form-group">
+                        <div class="row mb-2">
+                            <label for="rute_from">Asal</label>
+                            <input class="form-control" type="text" placeholder="Asal" for="rute_from" id="rute_from" name="rute_from" value="<?=$p['rute_from'];?>">
+                        </div>
+                    </div>
+                    <div class="col form-group">
+                        <div class="row mb-2">
+                            <label for="rute_to">Tujuan</label>
+                            <input class="form-control" type="text" placeholder="Tujuan" for="rute_to" id="rute_to" name="rute_to" value="<?=$p['rute_to'];?>">
+                        </div>
+                    </div>
+                    <div class="col form-group">
+                        <div class="row mb-2">
+                            <label for="price">Harga</label>
+                            <input class="form-control" type="text" placeholder="Harga" for="price" id="price" name="price" value="<?=$p['price'];?>">
+                        </div>
+                    </div>
+                    <div class="col form-group">
+                        <div class="row mb-2">
+                            <label for="id_trans">Kode Pesawat</label>
+                            <input class="form-control" type="text" placeholder="Code Pesawat" for="id_trans" id="id_trans" name="id_trans" value="<?=$p['code'];?>">
+                        </div>
+                    </div>
+                    <!-- <div class="col">
+                        <div class="row mb-2">
+                            <select class="form-control" name="" id="">
+                                <option class="form-control" type="text">Garuda</option>
+                                <option class="form-control" type="text">Lion Air</option>
+                                <option class="form-control" type="text">City Link</option>
+                            </select>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="idrute">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" type="submit">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
 
-    <?=$this->endSection()?>
+<?=$this->endSection()?>
