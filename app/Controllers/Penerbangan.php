@@ -44,5 +44,4 @@ class Penerbangan extends BaseController
         // return view('penerbangan/home', $data);
         return redirect()->to('/penerbangan');
     }
-
 }
