@@ -14,7 +14,7 @@ class pesawatModel extends Model
     // protected $returnType = 'array';
     // protected $useSoftDeletes = true;
 
-    // protected $allowedFields = ['depart', 'rute_from', 'rute_to', 'price'];
+    protected $allowedFields = ['idtransportasi', 'code', 'description'];
 
     // protected $useTimestamps = true;
 

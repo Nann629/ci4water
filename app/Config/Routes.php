@@ -42,16 +42,22 @@ $routes->get('logout', 'Auth::Logout');
 
 //Admin
 $routes->get('home', 'Home::index');
-
 $routes->get('pesawat', 'Pesawat::index');
-// $routes->get('/pesawat', 'Pesawat::index');
+$routes->post('pesawat/save', 'Pesawat::save');
+$routes->get('pesawat/delete(:num)', 'Pesawat::delete/$1');
 
-$routes->get('tiket', 'Tiket::index');
-
+// Routes Penerbangan
 $routes->get('penerbangan', 'Penerbangan::index');
 $routes->post('penerbangan/save', 'Penerbangan::save');
 $routes->post('penerbangan/update(:segment)', 'Penerbangan::update/$1');
 $routes->get('penerbangan/delete(:num)', 'Penerbangan::delete/$1');
+
+// Routes Tiket
+$routes->get('tiket', 'Tiket::index');
+$routes->post('tiket/save', 'Tiket::save');
+$routes->post('tiket/update(:segment)', 'tiket::update/$1');
+$routes->get('tiket/delete(:num)', 'Tiket::delete/$1');
+
 
 /*
  * --------------------------------------------------------------------

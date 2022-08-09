@@ -17,7 +17,7 @@
     <div class="col-xl">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Tiket</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Pesawat</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -104,21 +104,13 @@
                     <div class="col form-group">
                         <div class="row mb-2">
                             <label for="depart">Depart</label>
-                            <input class="form-control" type="date" placeholder="Depart" id="depart" name="depart" autofocus>
+                            <input class="form-control" type="text" placeholder="Depart" id="depart" name="depart" autofocus>
                         </div>
                     </div>
                     <div class="col form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="Issued" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Issued
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2" value="Booking">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Booking
-                            </label>
+                        <div class="row mb-2">
+                            <label for="status">Status</label>
+                            <textarea class="form-control" name="status" id="status" cols="30" rows="10"></textarea>
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,7 @@ class tiketModel extends Model
     // protected $returnType = 'array';
     // protected $useSoftDeletes = true;
 
-    // protected $allowedFields = ['depart', 'rute_from', 'rute_to', 'price'];
+    protected $allowedFields = ['idreservasi', 'reservasi_code', 'reservasi_at', 'price', 'depart', 'status'];
 
     // protected $useTimestamps = true;
 
