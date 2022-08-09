@@ -1,9 +1,9 @@
-<?=$this->extend('index')?>
-<?=$this->section('content')?>
+<?= $this->extend('index') ?>
+<?= $this->section('content') ?>
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-start mb-4">
-    <h1 class="h3 mb-0 text-gray-800 mr-4"><?=$title;?></h1>
+    <h1 class="h3 mb-0 text-gray-800 mr-4"><?= $title; ?></h1>
     <a href="" class="btn btn-sm btn-primary shadow-sm mr-4" data-toggle="modal" data-target="#addmodal">
         <i class="fas fa-plus fa-sm text-white-50"></i> Add
     </a>
@@ -29,7 +29,7 @@
                                 <th>Tujuan</th>
                                 <th>Harga</th>
                                 <th>Code Pesawat</th>
-                                <th>Aksi</th>
+                                <th colspan="2">Aksi</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -39,24 +39,29 @@
                                 <th>Tujuan</th>
                                 <th>Harga</th>
                                 <th>Code Pesawat</th>
-                                <th>Aksi</th>
+                                <th colspan="2">Aksi</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            <?php foreach ($rute as $p): ?>
+                            <?php foreach ($rute as $p) : ?>
                                 <tr>
-                                    <td><?=$p['depart'];?></td>
-                                    <td><?=$p['rute_from'];?></td>
-                                    <td><?=$p['rute_to'];?></td>
-                                    <td><?=$p['price'];?></td>
-                                    <td><?=$p['code'];?></td>
+                                    <td><?= $p['depart']; ?></td>
+                                    <td><?= $p['rute_from']; ?></td>
+                                    <td><?= $p['rute_to']; ?></td>
+                                    <td><?= $p['price']; ?></td>
+                                    <td><?= $p['code']; ?></td>
                                     <td class="text-center">
-                                        <a href="" type="button" class="btn btn-danger btn-sm text-center">
+                                        <a href="#" type="button" class="btn btn-primary btn-sm text-center" data-toggle="modal" data-target="#editmodal<?= $p['idrute']; ?>">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="/penerbangan/delete<?= $p['idrute'] ?>" onclick="return confirm('Apakah anda yakin?');" type="button" class="btn btn-danger btn-sm text-center">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>
-                            <?php endforeach;?>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -66,18 +71,18 @@
 </div>
 
 <!-- Add Modal-->
-<div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add data penerbangan</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <form action="penerbangan/save" method="post">
+<form action="penerbangan/save" method="POST">
+    <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add data penerbangan</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
                 <div class="modal-body">
-                    <?=csrf_field();?>
+                    <?= csrf_field(); ?>
                     <div class="col form-group">
                         <div class="row mb-2">
                             <label for="depart">Tanggal Berangkat</label>
@@ -122,10 +127,10 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <button class="btn btn-primary" type="submit">Add</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+</form>
 
 
-    <?=$this->endSection()?>
+<?= $this->endSection() ?>

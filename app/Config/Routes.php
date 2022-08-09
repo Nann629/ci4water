@@ -35,15 +35,23 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Auth::index');
+$routes->resource('auth');
+$routes->get('login', 'Auth::Login');
+$routes->get('logout', 'Auth::Logout');
 
-$routes->get('/pesawat', 'Pesawat::index');
+//Admin
+$routes->get('home', 'Home::index');
+
+$routes->get('pesawat', 'Pesawat::index');
 // $routes->get('/pesawat', 'Pesawat::index');
 
-$routes->get('/tiket', 'Tiket::index');
+$routes->get('tiket', 'Tiket::index');
 
-$routes->get('/penerbangan', 'Penerbangan::index');
-$routes->post('/penerbangan/save', 'Penerbangan::save');
+$routes->get('penerbangan', 'Penerbangan::index');
+$routes->post('penerbangan/save', 'Penerbangan::save');
+$routes->post('penerbangan/update(:segment)', 'Penerbangan::update/$1');
+$routes->get('penerbangan/delete(:num)', 'Penerbangan::delete/$1');
 
 /*
  * --------------------------------------------------------------------
